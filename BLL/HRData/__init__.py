@@ -1,4 +1,3 @@
-from i_hr_getter import IHRGetter
 from mock_hr_getter import MockHRGetter
 from hr_data_hierarchy_manager import HRDataHierarchyManager
 from hr_data_soldier_manager import HRSoldiersDataManager
