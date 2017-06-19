@@ -1,14 +1,16 @@
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
 from BLL import *
+from DAL import *
 
 # from Forms import *
 
 app = Flask(__name__)
 CORS(app)
+hr_dal = JsonHrSoldiersDbCommunicator()
 form_getter = MockFormGetter()
 form_executor = MockFormExecutor()
-hr_getter = MockHRGetter()
+hr_getter = HRSoldiersDataManager(hr_dal)
 
 
 @app.route("/forms", methods=['GET'])
@@ -56,7 +58,7 @@ def get_waiting_forms_by_user_id(user_id):
 
 @app.route("/HRdata/<user_id>", methods=['GET'])
 def get_user_data(user_id):
-    return hr_getter.get_user_details(user_id)
+    return hr_getter.get_hr_soldier_data_by_id(user_id)
 
 
 if __name__ == '__main__':

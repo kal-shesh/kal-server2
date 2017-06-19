@@ -1,0 +1,2 @@
+from json_hr_hierarchy_db_communicator import JsonHrHierarchyDbCommunicator
+from json_hr_soldiers_db_communicator import JsonHrSoldiersDbCommunicator
