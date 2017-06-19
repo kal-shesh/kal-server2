@@ -1,9 +1,9 @@
 import json
-from i_hr_getter import IHRGetter
+from Core import IHRSoldiersDataManager
 
 
-class MockHRGetter(IHRGetter):
-    def get_user_details(self, user_id):
+class MockHRGetter(IHRSoldiersDataManager):
+    def get_hr_soldier_data_by_id(self, user_id):
         return json.dumps(
             {
                 "ENTITY_TYPE": "Soldier",
