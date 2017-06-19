@@ -13,7 +13,11 @@ class MockFormGetter(IFormGetter):
 
     def get_form(self, id):
         return json.dumps({
-            "$schema": "http://json-schema.org/draft-04/schema#",
+            "id": "haaracha",
+            "displayName": "tofes haarachat keva",
+            "description": "a form to ask premission to hul",
+            "jpeg": "http://files.softicons.com/download/holidays-icons/desktop-halloween-icons-by-aha-soft/png/128x128/Death.png",
+            "schema":{"$schema": "http://json-schema.org/draft-04/schema#",
             "definitions": {},
             "id": "http://example.com/example.json",
             "properties": {
@@ -97,4 +101,4 @@ class MockFormGetter(IFormGetter):
                 }
             },
             "type": "object"
-        })
+        }})
