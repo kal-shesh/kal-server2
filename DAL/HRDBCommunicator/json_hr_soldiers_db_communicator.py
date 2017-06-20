@@ -1,7 +1,7 @@
 import json
 
 from Core.Interfaces.HRData.i_hr_soldiers_data_getter import IHRSoldierDataGetter
-from Core.Keys.hr_soldier_data_keys import *
+from Core.Keys.HRKeys.hr_soldier_data_keys import *
 from Core.system_consts import PATH_SEPARATOR
 
 # Mock Data Path

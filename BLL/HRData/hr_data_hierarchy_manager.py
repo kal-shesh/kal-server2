@@ -1,5 +1,4 @@
 from Core.Interfaces.HRData.i_hr_data_hierarchy_manager import IHRDataHierarchyManager
-from Core.Keys.hr_soldier_data_keys import TEAM_KEY, DEPARTMENT_KEY, BRANCH_KEY, UNIT_KEY, DIVISION_KEY
 
 
 class HRDataHierarchyManager(IHRDataHierarchyManager):
