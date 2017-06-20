@@ -4,6 +4,7 @@ import json
 import datetime
 import uuid
 from Core import Form
+from PDF.pdf_generator import PdfGenerator
 
 
 class FormExecutor(IFormExecutor):
@@ -24,12 +25,18 @@ class FormExecutor(IFormExecutor):
         form_object = Form.create_from_dictionary(form_data)
         self.__generate_step_approvers(user_id, form_object.form_metadata.next_steps)
         self.__save_new_form(form_object)
+        #PdfGenerator.create_pdf(form_object)
         return True
 
     def update_step(self, user_id, form_id, data):
+        form = self.form_commincator.get_form(form_id)
         if data['status'] in [APPROVED, REJECTED]:
-            self.form_commincator.update_form(self.form_commincator.get_form(form_id))
+            self.form_commincator.update_form(form)
             self.user_commincator.update_user_awaiting_forms_file(user_id, {REMOVED_KEY: [form_id]})
+            #PdfGenerator.create_pdf(form)
+        elif data['status'] in [WAITING]:
+            for approver in self.__get_all_awaiting_approvers(form.form_metadata.next_steps):
+                self.user_commincator.update_user_awaiting_forms_file(approver, {ADDED_KEY: [form_id]})
 
     def __get_full_form_data(self, form_schema, form_data):
         form_schema_keys = self.__get_default_dictionary_by_schema(form_schema['schema']['properties'])
@@ -64,9 +71,9 @@ class FormExecutor(IFormExecutor):
 
     def __generate_step_approvers(self, user_id, steps):
         user_data = self.hr_data_manager.get_hr_soldier_data_by_id(user_id)
-        hirarchy = self.__get_user_hirarchy_list(user_data)
+        hierarchy = self.__get_user_hirarchy_list(user_data)
         for step in steps:
-            step.approver = self.hr_hirarchy_manager.get_corresponding_organizational_role(hirarchy,
+            step.approver = self.hr_hirarchy_manager.get_corresponding_organizational_role(hierarchy,
                                                                                            step.approver)
             if len(step.next_steps) != 0:
                 self.__generate_step_approvers(user_id, step.next_steps)

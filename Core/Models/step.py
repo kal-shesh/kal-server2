@@ -9,13 +9,13 @@ class Step:
     def create_step_from_dictionary(data):
         step_name = data['step_name']
         status = data['status']
-        aprrover = data['aprrover']
+        approver = data['approver']
         next_steps = []
 
         for s in data['next_steps']:
             next_steps.append(Step.create_step_from_dictionary(s))
 
-        step = Step(step_name, status, aprrover, next_steps)
+        step = Step(step_name, status, approver, next_steps)
         return step
 
     @staticmethod

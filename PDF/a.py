@@ -1,7 +1,7 @@
 import json
 import os
 
-pdfsPath = "C:\\Users\\lavi\\Desktop\\Hackaton\\server\\kal-server2\\PDF\\Folder\\"
+pdfsPath = "C:\\Users\\lavi\\Desktop\\Hackaton\\server\\kal-server2\\PDF\\Templates\\"
 
 file = open('data.json','w')
 json.dump({"Soldiers Details": {

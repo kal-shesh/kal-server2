@@ -19,11 +19,10 @@ class FormsFSUserCommunicator(IUsersCommunicator):
                     user=user_id,
                     active_forms=ACTIVE_FORMS_FILE_NAME)
 
-        if not os.path.exists(active_forms_file_path):
-            raise ValueError("Active Forms File does not exist. ID: {id}".format(id=user_id))
-
-        with open(active_forms_file_path, "rb") as active_forms_fp:
-            ids = json.load(active_forms_fp)
+        ids = list()
+        if os.path.exists(active_forms_file_path):
+            with open(active_forms_file_path, "rb") as active_forms_fp:
+                ids = json.load(active_forms_fp)
         return ids
 
     def get_user_awaiting_forms_ids(self, user_id):
@@ -34,11 +33,10 @@ class FormsFSUserCommunicator(IUsersCommunicator):
                     user=user_id,
                     awaiting_forms=AWAITING_FORMS_FILE_NAME)
 
-        if not os.path.exists(awaiting_forms_file_path):
-            raise ValueError("Awaiting Forms File does not exist. ID: {id}".format(id=user_id))
-
-        with open(awaiting_forms_file_path, "rb") as active_forms_fp:
-            ids = json.load(active_forms_fp)
+        ids = list()
+        if os.path.exists(awaiting_forms_file_path):
+            with open(awaiting_forms_file_path, "rb") as active_forms_fp:
+                ids = json.load(active_forms_fp)
         return ids
 
     def update_user_active_forms_file(self, user_id, changes):
