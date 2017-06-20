@@ -5,7 +5,7 @@ from Core.Keys.HRKeys.hr_soldier_data_keys import *
 from Core.system_consts import PATH_SEPARATOR
 
 # Mock Data Path
-MOCK_HR_SOLDIERS_DATA_DB_PATH = ".{delimiter}DAL{delimiter}HRDBCommunicator{delimiter}soldiers_data_old.json".format(delimiter=PATH_SEPARATOR)
+MOCK_HR_SOLDIERS_DATA_DB_PATH = ".{delimiter}DAL{delimiter}HRDBCommunicator{delimiter}soldiers_data.json".format(delimiter=PATH_SEPARATOR)
 
 
 class JsonHrSoldiersDbCommunicator(IHRSoldierDataGetter):
