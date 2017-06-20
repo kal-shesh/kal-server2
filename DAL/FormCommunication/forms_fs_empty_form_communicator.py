@@ -16,13 +16,13 @@ class FormsFSEmptyFormCommunicator(IEmptyFormCommunicator):
     def get_all_waiting_forms(self, user_id):
         forms = []
         for form in self._forms_communicator.get_all_awaiting_forms_by_user(user_id):
-            forms.append(json.loads(Form.serialize_to_json(form)))
+            forms.append(Form.serialize_to_json(form))
         return json.dumps(forms)
 
     def get_all_active_forms(self, user_id):
         forms = []
         for form in self._forms_communicator.get_all_active_forms_by_user(user_id):
-            forms.append(json.loads(Form.serialize_to_json(form)))
+            forms.append(Form.serialize_to_json(form))
         return json.dumps(forms)
 
     def get_all_forms_types(self):
