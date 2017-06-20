@@ -269,7 +269,7 @@ class MockFormGetter(IEmptyFormCommunicator):
                     "Details and Comments": "dolore qui id"
                 }
             },
-            "form_metadata": {
+            "metadata": {
                 "next_steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
                            "next_steps": [{"step_id": "ddffdads", "step_name": "ishur rashatz", "aprrover": "aaassss",
                                            "status": "waiting", "next_steps": []}]}],
@@ -318,7 +318,7 @@ class MockFormGetter(IEmptyFormCommunicator):
                     "Details and Comments": "dolore qui id"
                 }
             },
-            "form_metadata": {
+            "metadata": {
                 "next_steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
                            "next_steps": [{"step_id": "ddffdads", "step_name": "ishur rashatz", "aprrover": "aaassss",
                                            "status": "waiting", "next_steps": []}]}],
@@ -371,7 +371,7 @@ class MockFormGetter(IEmptyFormCommunicator):
                     "Details and Comments": "dolore qui id"
                 }
             },
-            "form_metadata": {
+            "metadata": {
                 "next_steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
                            "next_steps": [{"step_id": "ddffdads", "step_name": "ishur rashatz", "aprrover": "aaassss",
                                            "status": "waiting", "next_steps": []}]}],

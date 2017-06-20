@@ -11,7 +11,7 @@ class FormsFSEmptyFormCommunicator(IEmptyFormCommunicator):
         self._forms_communicator = forms_communicator
 
     def get_form(self, form_id):
-        return Form.serialize_to_json(self._forms_communicator.get_form(form_id))
+        return json.dumps(Form.serialize_to_json(self._forms_communicator.get_form(form_id)))
 
     def get_all_waiting_forms(self, user_id):
         forms = []

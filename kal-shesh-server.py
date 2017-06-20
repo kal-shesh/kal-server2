@@ -61,7 +61,8 @@ def get_forms_by_user_id(user_id):
 @app.route("/forms/active/my/form_id=<form_id>", methods=['GET'])
 def get_form_by_user_id(form_id):
     # writing to file and to user_id file
-    return form_getter.get_form(form_id)
+    data = form_getter.get_form(form_id)
+    return data
 
 
 @app.route("/forms/active/waiting/<user_id>", methods=['GET'])
