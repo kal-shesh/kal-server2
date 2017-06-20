@@ -33,7 +33,7 @@ class FormsFSFormCommunicator(IFormCommunicator):
             raise ValueError("Form does not exist already. ID: {id}".format(id=form.uuid))
 
         with open(form_path, "wb+") as form_fp:
-            json.dump(form, form_fp)
+            json.dump(Form.serialize_to_json(form), form_fp)
 
     def create_form(self, form):
         form_path = "{root}{delimiter}{forms}{delimiter}{id}.json".format(delimiter=PATH_SEPARATOR,
@@ -44,7 +44,7 @@ class FormsFSFormCommunicator(IFormCommunicator):
             raise ValueError("Form exists already. ID: {id}".format(id=form.uuid))
 
         with open(form_path, "wb+") as form_fp:
-            json.dump(form, form_fp)
+            json.dump(Form.serialize_to_json(form), form_fp)
 
     def get_all_active_forms_by_user(self, user_id):
         forms = list()

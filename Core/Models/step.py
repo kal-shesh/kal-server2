@@ -17,3 +17,14 @@ class Step:
 
         step = Step(step_name, status, aprrover, next_steps)
         return step
+
+    @staticmethod
+    def serialize_to_json(step):
+        data = dict()
+        data['step_name'] = step.step_name
+        data['status'] = step.status
+        data['approver'] = step.approver
+        data['next_steps'] = []
+        for s in step.next_steps:
+            data['next_steps'].append(Step.serialize_to_json(s))
+        return data
