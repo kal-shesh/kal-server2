@@ -1,9 +1,13 @@
 from flask import Flask, request
 from flask_cors import CORS, cross_origin
+import json
 from BLL import *
 from DAL import *
 
 # from Forms import *
+
+from Core.system_consts import PATH_SEPARATOR
+MATCHER_PATH = ".{delimiter}Core{delimiter}Configs{delimiter}display_name_to_hr_data_mapping.json"
 
 app = Flask(__name__)
 CORS(app)
@@ -12,6 +16,8 @@ form_getter = MockFormGetter()
 #my_form_executor = FormExecutor(form_getter)
 my_form_executor = MockFormExecutor()
 hr_getter = HRSoldiersDataManager(hr_dal)
+with open(MATCHER_PATH, "rb") as matcher_fp:
+    adapter = DisplayNameToHRServerClientDataExchangeMatcher(json.load(matcher_fp))
 
 
 @app.route("/forms", methods=['GET'])
@@ -61,6 +67,11 @@ def get_waiting_forms_by_user_id(user_id):
 @app.route("/HRdata/<user_id>", methods=['GET'])
 def get_user_data(user_id):
     result = hr_getter.get_hr_soldier_data_by_id(user_id)
+    for key in result:
+        new_key = adapter.match_server_to_client(key)
+        data = result[key]
+        del result[key]
+        result[new_key] = data
     return result
 
 
