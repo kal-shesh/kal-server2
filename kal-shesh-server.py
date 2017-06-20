@@ -42,7 +42,8 @@ def get_form(type_id):
 def create_form(user_id):
     # writing to file and to user_id file
     data = my_form_executor.create_form(user_id, request.data)
-    return data
+    if data:
+        return "succeeded"
 
 
 @app.route("/forms/active/update/user=<user_id>&form_id=<form_id>", methods=['POST'])

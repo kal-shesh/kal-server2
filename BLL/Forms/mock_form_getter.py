@@ -224,7 +224,7 @@ class MockFormGetter(IFormGetter):
                     "Commander Opinion"
                 ]
             },
-            "steps": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
+            "next_steps": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
                       "next_steps": [{"step_id": "ddffdads", "step_name": "ishur ramad", "aprrover": "HEAD OF BRANCH",
                                       "status": "waiting", "next_steps": []}]}]})
 
@@ -269,8 +269,8 @@ class MockFormGetter(IFormGetter):
                     "Details and Comments": "dolore qui id"
                 }
             },
-            "metadata": {
-                "steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
+            "form_metadata": {
+                "next_steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
                            "next_steps": [{"step_id": "ddffdads", "step_name": "ishur rashatz", "aprrover": "aaassss",
                                            "status": "waiting", "next_steps": []}]}],
                 "form_type": "haaracha"
@@ -318,8 +318,8 @@ class MockFormGetter(IFormGetter):
                     "Details and Comments": "dolore qui id"
                 }
             },
-            "metadata": {
-                "steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
+            "form_metadata": {
+                "next_steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
                            "next_steps": [{"step_id": "ddffdads", "step_name": "ishur rashatz", "aprrover": "aaassss",
                                            "status": "waiting", "next_steps": []}]}],
                 "form_type": "haaracha",
@@ -371,8 +371,8 @@ class MockFormGetter(IFormGetter):
                     "Details and Comments": "dolore qui id"
                 }
             },
-            "metadata": {
-                "steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
+            "form_metadata": {
+                "next_steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
                            "next_steps": [{"step_id": "ddffdads", "step_name": "ishur rashatz", "aprrover": "aaassss",
                                            "status": "waiting", "next_steps": []}]}],
                 "form_type": "haaracha",

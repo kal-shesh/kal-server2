@@ -19,11 +19,12 @@ class FormExecutor(IFormExecutor):
         form_data = json.loads(form_data)
         form_schema = json.loads(self.form_getter.get_form_type(form_data['id']))
         form_data['data'] = self.__get_full_form_data(form_schema, form_data)
-        form_data['uuid'] = uuid.uuid4()
+        form_data['uuid'] = uuid.uuid4().urn[9:]
         self.__generate_metadata(form_data, form_schema, user_id)
         form_object = Form.create_from_dictionary(form_data)
-        self.__generate_step_approvers(user_id, form_object.form_metadata.steps)
+        self.__generate_step_approvers(user_id, form_object.form_metadata.next_steps)
         self.__save_new_form(form_object)
+        return True
 
     def update_step(self, user_id, form_id, data):
         raise NotImplementedError
@@ -78,14 +79,14 @@ class FormExecutor(IFormExecutor):
         self.form_commincator.create_form(form_object)
         self.user_commincator.update_user_active_forms_file(form_object.form_metadata.creator_id,
                                                             changes)
-        for approver in self.__get_all_awaiting_approvers(form_object.form_metadata.steps):
+        for approver in self.__get_all_awaiting_approvers(form_object.form_metadata.next_steps):
             self.user_commincator.update_user_awaiting_forms_file(approver, changes)
 
     def __get_all_awaiting_approvers(self, steps):
         approvers = []
         for step in steps:
             if step.status == WAITING:
-                approvers.append(step.approver_id)
+                approvers.append(step.approver)
             elif step.status == APPROVED:
-                approvers = approvers + self.__get_all_awaiting_approvers(steps.steps)
+                approvers = approvers + self.__get_all_awaiting_approvers(step.next_steps)
         return approvers
