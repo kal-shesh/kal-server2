@@ -23,7 +23,7 @@ class FormExecutor(IFormExecutor):
         form_data['uuid'] = uuid.uuid4().urn[9:]
         self.__generate_metadata(form_data, form_schema, user_id)
         form_object = Form.create_from_dictionary(form_data)
-        self.__generate_step_approvers(user_id, form_object.form_metadata.next_steps)
+        self.__generate_step_approvers(user_id, form_object.metadata.next_steps)
         self.__save_new_form(form_object)
         #PdfGenerator.create_pdf(form_object)
         return True
@@ -63,11 +63,11 @@ class FormExecutor(IFormExecutor):
         return dictionary
 
     def __generate_metadata(self, form_data, form_type_data, user_id):
-        form_data['form_metadata'] = {key: value for (key, value) in form_type_data.items() if key != 'shcema'}
+        form_data['metadata'] = {key: value for (key, value) in form_type_data.items() if key != 'shcema'}
         time = str(datetime.datetime.now())
-        form_data['form_metadata']['creation_time'] = time
-        form_data['form_metadata']['last_update_time'] = time
-        form_data['form_metadata']['creator_id'] = user_id
+        form_data['metadata']['creation_time'] = time
+        form_data['metadata']['last_update_time'] = time
+        form_data['metadata']['creator_id'] = user_id
 
     def __generate_step_approvers(self, user_id, steps):
         user_data = self.hr_data_manager.get_hr_soldier_data_by_id(user_id)
@@ -85,9 +85,9 @@ class FormExecutor(IFormExecutor):
     def __save_new_form(self, form_object):
         changes = {ADDED_KEY: [form_object.uuid]}
         self.form_commincator.create_form(form_object)
-        self.user_commincator.update_user_active_forms_file(form_object.form_metadata.creator_id,
+        self.user_commincator.update_user_active_forms_file(form_object.metadata.creator_id,
                                                             changes)
-        for approver in self.__get_all_awaiting_approvers(form_object.form_metadata.next_steps):
+        for approver in self.__get_all_awaiting_approvers(form_object.metadata.next_steps):
             self.user_commincator.update_user_awaiting_forms_file(approver, changes)
 
     def __get_all_awaiting_approvers(self, steps):

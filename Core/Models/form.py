@@ -2,10 +2,10 @@ from step import Step
 
 
 class Form:
-    def __init__(self, uuid, form_data, form_metadata):
+    def __init__(self, uuid, data, metadata):
         self.uuid = uuid
-        self.form_data = form_data
-        self.form_metadata = form_metadata
+        self.data = data
+        self.metadata = metadata
 
     @staticmethod
     def create_from_dictionary(data):
@@ -13,10 +13,10 @@ class Form:
         from step import Step
 
         steps = []
-        for s in data['form_metadata']['next_steps']:
+        for s in data['metadata']['next_steps']:
             steps.append(Step.create_step_from_dictionary(s))
 
-        metadata_dict = data['form_metadata']
+        metadata_dict = data['metadata']
         metadata = FormMetadata(steps,
                                 metadata_dict['creation_time'],
                                 metadata_dict['last_update_time'],
@@ -30,14 +30,14 @@ class Form:
     def serialize_to_json(form):
         data = dict()
         data['uuid'] = form.uuid
-        data['form_data'] = form.form_data
-        data['form_metadata'] = dict()
-        data['form_metadata']['creation_time'] = form.form_metadata.creation_time
-        data['form_metadata']['last_update_time'] = form.form_metadata.last_update_time
-        data['form_metadata']['id'] = form.form_metadata.id
-        data['form_metadata']['creator_id'] = form.form_metadata.creator_id
-        data['form_metadata']['displayName'] = form.form_metadata.displayName
-        data['form_metadata']['next_steps'] = []
-        for step in form.form_metadata.next_steps:
-            data['form_metadata']['next_steps'].append(Step.serialize_to_json(step))
+        data['data'] = form.data
+        data['metadata'] = dict()
+        data['metadata']['creation_time'] = form.metadata.creation_time
+        data['metadata']['last_update_time'] = form.metadata.last_update_time
+        data['metadata']['id'] = form.metadata.id
+        data['metadata']['creator_id'] = form.metadata.creator_id
+        data['metadata']['displayName'] = form.metadata.displayName
+        data['metadata']['next_steps'] = []
+        for step in form.metadata.next_steps:
+            data['metadata']['next_steps'].append(Step.serialize_to_json(step))
         return data
