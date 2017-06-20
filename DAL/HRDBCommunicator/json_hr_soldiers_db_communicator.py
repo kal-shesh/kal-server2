@@ -13,14 +13,14 @@ class JsonHrSoldiersDbCommunicator(IHRSoldierDataGetter):
         pass
 
     def get_soldiers_data(self):
-        self._get_data_mock(MOCK_HR_SOLDIERS_DATA_DB_PATH)
+        return self._get_data_mock(MOCK_HR_SOLDIERS_DATA_DB_PATH)
 
     @staticmethod
     def _get_data_mock(path):
         hr_data = dict()
         with open(path, "rb") as fp:
             try:
-                data = json.loads(fp)
+                data = json.load(fp)
             except Exception as e:
                 print e
                 return None
