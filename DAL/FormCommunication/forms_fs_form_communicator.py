@@ -2,7 +2,7 @@ import os
 import json
 
 from Core.Interfaces.FormCommunication.i_form_communicator import *
-from Core.Models.Form import Form
+from Core.Models.form import Form
 from Core.Keys.FormsFSKeys.forms_fs_file_navigation_keys import PATH_SEPARATOR, FORMS_FS_ROOT, FORMS_FOLDER_NAME
 
 
