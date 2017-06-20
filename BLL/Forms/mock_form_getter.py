@@ -1,9 +1,9 @@
 import json
 
-from Core import IFormGetter
+from Core.Interfaces.FormCommunication.i_empty_form_communicator import IEmptyFormCommunicator
 
 
-class MockFormGetter(IFormGetter):
+class MockFormGetter(IEmptyFormCommunicator):
     def get_all_forms_types(self):
         return json.dumps(
             {"forms": [{"id": "hul", "displayName": "tofesHul", "description": "a form to ask premission to hul",

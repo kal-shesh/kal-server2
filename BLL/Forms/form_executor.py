@@ -27,7 +27,9 @@ class FormExecutor(IFormExecutor):
         return True
 
     def update_step(self, user_id, form_id, data):
-        raise NotImplementedError
+        if data['status'] in [APPROVED, REJECTED]:
+            self.form_commincator.update_form(self.form_commincator.get_form(form_id))
+            self.user_commincator.update_user_awaiting_forms_file(user_id, {REMOVED_KEY: [form_id]})
 
     def __get_full_form_data(self, form_schema, form_data):
         form_schema_keys = self.__get_default_dictionary_by_schema(form_schema['schema']['properties'])
@@ -60,13 +62,12 @@ class FormExecutor(IFormExecutor):
         form_data['form_metadata']['last_update_time'] = time
         form_data['form_metadata']['creator_id'] = user_id
 
-
     def __generate_step_approvers(self, user_id, steps):
         user_data = self.hr_data_manager.get_hr_soldier_data_by_id(user_id)
         hirarchy = self.__get_user_hirarchy_list(user_data)
         for step in steps:
             step.approver = self.hr_hirarchy_manager.get_corresponding_organizational_role(hirarchy,
-                                                                                              step.approver)
+                                                                                           step.approver)
             if len(step.next_steps) != 0:
                 self.__generate_step_approvers(user_id, step.next_steps)
 

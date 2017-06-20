@@ -1,52 +1,60 @@
 {
   "id": "diploma",
-  "displayName": "tofesDiploma",
-  "description": "a form to ask premission to diploma",
+  "displayName": "Diploma Form",
+  "description": "A form to register a new degree/diploma",
   "jpeg": "http://files.softicons.com/download/web-icons/free-web-icon-pack-1-by-rockettheme/png/128x128/earth.png",
   "schema": {
     "$schema": "http://json-schema.org/draft-04/schema#",
     "description": "",
     "type": "object",
     "properties": {
-      "Soldier Details": {
+      "Soldiers Details": {
         "type": "object",
         "properties": {
-          "Personal Number": {
-            "type": "string",
-            "minLength": 6,
-            "maxLength": 9
-          },
-          "Rank": {
-            "type": "string",
-            "enum": [
-              "Private",
-              "Corporal",
-              "Sergeant",
-              "Staff Sergeant",
-              "S.Lieutenant",
-              "Lieutenant",
-              "Captain",
-              "Major",
-              "Lieutenant Colonel",
-              "Colonel",
-              "Brigadier-general"
+          "Personal Info": {
+            "type": "object",
+            "properties": {
+              "Personal Number": {
+                "type": "string",
+                "minLength": 6,
+                "maxLength": 9
+              },
+              "Rank": {
+                "type": "string",
+                "enum": [
+                  "Private",
+                  "Corporal",
+                  "Sergeant",
+                  "Staff Sergeant",
+                  "S.Lieutenant",
+                  "Lieutenant",
+                  "Captain",
+                  "Major",
+                  "Lieutenant Colonel",
+                  "Colonel",
+                  "Brigadier-general"
+                ]
+              },
+              "First Name": {
+                "type": "string",
+                "minLength": 1
+              },
+              "Family Name": {
+                "type": "string",
+                "minLength": 3,
+                "maxLength": 45
+              }
+            },
+            "required": [
+              "Personal Number",
+              "Rank",
+              "First Name",
+              "Family Name"
             ]
-          },
-          "First Name": {
-            "type": "string",
-            "minLength": 1
-          },
-          "Family Name": {
-            "type": "string",
-            "minLength": 3,
-            "maxLength": 45
           }
         },
         "required": [
-          "Military ID",
-          "Rank",
-          "First Name",
-          "Family Name"
+          "Personal Info"
         ]
       },
       "Diploma Details": {
@@ -71,8 +79,9 @@
       }
     },
     "required": [
-      "Soldier Details",
+      "Soldiers Details",
       "Diploma Details"
     ]
-  }
+  },
+  "next_steps": []
 }

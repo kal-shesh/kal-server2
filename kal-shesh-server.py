@@ -49,7 +49,7 @@ def create_form(user_id):
 @app.route("/forms/active/update/user=<user_id>&form_id=<form_id>", methods=['POST'])
 def update_step(user_id, form_id):
     # writing to file and to user_id file
-    form_executor.update_step(user_id, form_id, request.data)
+    my_form_executor.update_step(user_id, form_id, request.data)
 
 
 @app.route("/forms/active/my/user_id=<user_id>", methods=['GET'])

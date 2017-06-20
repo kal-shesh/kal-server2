@@ -1,7 +1,7 @@
 {
             "id": "haaracha",
-            "displayName": "tofes haarachat keva",
-            "description": "a form to ask premission to hul",
+            "displayName": "Extension Of Service",
+            "description": "A form to submit a request for extend of service",
             "jpeg": "http://files.softicons.com/download/holidays-icons/desktop-halloween-icons-by-aha-soft/png/128x128/Death.png",
             "schema": {
                 "$schema": "http://json-schema.org/draft-04/schema#",
@@ -209,6 +209,6 @@
                     "Commander Opinion"
                 ]
             },
-            "steps": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
+            "next_steps": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
                       "next_steps": [{"step_id": "ddffdads", "step_name": "ishur ramad", "aprrover": "HEAD OF BRANCH",
                                       "status": "waiting", "next_steps": []}]}]}
