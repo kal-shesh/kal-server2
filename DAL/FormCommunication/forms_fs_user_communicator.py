@@ -66,7 +66,7 @@ class FormsFSUserCommunicator(IUsersCommunicator):
                 if remove_change in data:
                     data.remove(remove_change)
 
-        with open(active_forms_file_path) as active_forms_write_fp:
+        with open(active_forms_file_path, 'w+') as active_forms_write_fp:
             json.dump(data, active_forms_write_fp)
 
     def update_user_awaiting_forms_file(self, user_id, changes):
@@ -94,7 +94,7 @@ class FormsFSUserCommunicator(IUsersCommunicator):
                 if remove_change in data:
                     data.remove(remove_change)
 
-        with open(awaiting_forms_file_path) as awaiting_forms_write_fp:
+        with open(awaiting_forms_file_path, "w+") as awaiting_forms_write_fp:
             json.dump(data, awaiting_forms_write_fp)
 
     @staticmethod

@@ -38,6 +38,6 @@ class Form:
         data['form_metadata']['creator_id'] = form.form_metadata.creator_id
         data['form_metadata']['displayName'] = form.form_metadata.displayName
         data['form_metadata']['next_steps'] = []
-        for step in form.form_metadata.steps:
+        for step in form.form_metadata.next_steps:
             data['form_metadata']['next_steps'].append(Step.serialize_to_json(step))
         return data
