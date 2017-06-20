@@ -11,7 +11,7 @@ class HRSoldiersDataManager(IHRSoldiersDataManager):
     def get_hr_soldier_data_by_id(self, id_number):
         if id_number in self._data:
             try:
-                return json.dumps(self._data[id_number])
+                return self._data[id_number]
             except Exception as e:
                 pass
         return None

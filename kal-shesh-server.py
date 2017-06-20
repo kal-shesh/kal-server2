@@ -67,12 +67,12 @@ def get_waiting_forms_by_user_id(user_id):
 @app.route("/HRdata/<user_id>", methods=['GET'])
 def get_user_data(user_id):
     result = hr_getter.get_hr_soldier_data_by_id(user_id)
-    for key in result:
+    for key in result.keys():
         new_key = adapter.match_server_to_client(key)
         data = result[key]
         del result[key]
         result[new_key] = data
-    return result
+    return json.dumps(result)
 
 
 if __name__ == '__main__':
