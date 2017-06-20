@@ -17,7 +17,7 @@ user_commincator = FormsFSUserCommunicator()
 form_commincator = FormsFSFormCommunicator(user_commincator)
 hr_data_manager = HRSoldiersDataManager(hr_dal)
 hr_hirarchy_manager = HRDataHierarchyManager(hirarchy_data_getter)
-form_getter = MockFormGetter()
+form_getter = FormsFSEmptyFormCommunicator(form_commincator)
 my_form_executor = FormExecutor(form_getter, form_commincator, user_commincator, hr_data_manager, hr_hirarchy_manager)
 #my_form_executor = MockFormExecutor()
 hr_getter = HRSoldiersDataManager(hr_dal)
@@ -42,7 +42,8 @@ def get_form(type_id):
 def create_form(user_id):
     # writing to file and to user_id file
     data = my_form_executor.create_form(user_id, request.data)
-    return data
+    if data:
+        return "succeeded"
 
 
 @app.route("/forms/active/update/user=<user_id>&form_id=<form_id>", methods=['POST'])

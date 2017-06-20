@@ -1,0 +1,78 @@
+{
+  "id": "diploma",
+  "displayName": "tofesDiploma",
+  "description": "a form to ask premission to diploma",
+  "jpeg": "http://files.softicons.com/download/web-icons/free-web-icon-pack-1-by-rockettheme/png/128x128/earth.png",
+  "schema": {
+    "$schema": "http://json-schema.org/draft-04/schema#",
+    "description": "",
+    "type": "object",
+    "properties": {
+      "Soldier Details": {
+        "type": "object",
+        "properties": {
+          "Personal Number": {
+            "type": "string",
+            "minLength": 6,
+            "maxLength": 9
+          },
+          "Rank": {
+            "type": "string",
+            "enum": [
+              "Private",
+              "Corporal",
+              "Sergeant",
+              "Staff Sergeant",
+              "S.Lieutenant",
+              "Lieutenant",
+              "Captain",
+              "Major",
+              "Lieutenant Colonel",
+              "Colonel",
+              "Brigadier-general"
+            ]
+          },
+          "First Name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "Family Name": {
+            "type": "string",
+            "minLength": 3,
+            "maxLength": 45
+          }
+        },
+        "required": [
+          "Military ID",
+          "Rank",
+          "First Name",
+          "Family Name"
+        ]
+      },
+      "Diploma Details": {
+        "type": "object",
+        "properties": {
+          "Diploma Time": {
+            "type": "string",
+            "enum": [
+              "Studied During his service",
+              "Studied before permanent service"
+            ]
+          },
+          "Diploma Start Date": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "required": [
+          "Diploma Time",
+          "Diploma Start Date"
+        ]
+      }
+    },
+    "required": [
+      "Soldier Details",
+      "Diploma Details"
+    ]
+  }
+}
