@@ -12,7 +12,7 @@ class FormsFSUserCommunicator(IUsersCommunicator):
         pass
 
     def get_user_active_forms_ids(self, user_id):
-        active_forms_file_path = "{root}{delimiter}{users}{delimiter}{user}{active_forms}" \
+        active_forms_file_path = "{root}{delimiter}{users}{delimiter}{user}{delimiter}{active_forms}" \
             .format(root=FORMS_FS_ROOT,
                     delimiter=PATH_SEPARATOR,
                     users=USERS_FOLDER_NAME,
@@ -27,7 +27,7 @@ class FormsFSUserCommunicator(IUsersCommunicator):
         return ids
 
     def get_user_awaiting_forms_ids(self, user_id):
-        awaiting_forms_file_path = "{root}{delimiter}{users}{delimiter}{user}{awaiting_forms}" \
+        awaiting_forms_file_path = "{root}{delimiter}{users}{delimiter}{user}{delimiter}{awaiting_forms}" \
             .format(root=FORMS_FS_ROOT,
                     delimiter=PATH_SEPARATOR,
                     users=USERS_FOLDER_NAME,
