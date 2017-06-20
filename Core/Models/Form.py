@@ -17,8 +17,8 @@ class Form:
         metadata = FormMetadata(steps,
                                 metadata_dict['creation_time'],
                                 metadata_dict['last_update_time'],
-                                metadata_dict['form_type'],
+                                metadata_dict['id'],
                                 metadata_dict['creator_id'],
-                                metadata_dict['display_name'])
-        form = Form(data['uuid'], data['form_data'], metadata)
+                                metadata_dict['displayName'])
+        form = Form(data['uuid'], data['data'], metadata)
         return form

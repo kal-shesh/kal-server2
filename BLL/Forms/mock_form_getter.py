@@ -224,7 +224,7 @@ class MockFormGetter(IFormGetter):
                     "Commander Opinion"
                 ]
             },
-            "step": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
+            "steps": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
                       "next_steps": [{"step_id": "ddffdads", "step_name": "ishur ramad", "aprrover": "HEAD OF BRANCH",
                                       "status": "waiting", "next_steps": []}]}]})
 
@@ -332,4 +332,54 @@ class MockFormGetter(IFormGetter):
         }]})
 
     def get_all_waiting_forms(self, user_id):
-        return json.dumps({"forms": []})
+        return json.dumps({"forms": [{
+            "data": {"Soldiers Details": {
+                "Personal Info": {
+                    "ID": 4408783,
+                    "Rank": "Lieutenant",
+                    "Family Name": "occaec",
+                    "First Name": "sunt ut elit oc",
+                    "Corps": "minim laborum i",
+                    "Unit": "cupidatat nul",
+                    "Citizenship": "sunt eiusmod ea Duis",
+                    "Family Status": "incididunt ullamco sed ut",
+                    "education": "quis anim tem",
+                    "Medical Profile": 53521427,
+                    "Is Permanent": True,
+                    "Medical Profile set date": "2454-12-21T08:06:40.054Z",
+                    "Job": "commo",
+                    "Main Profession": "vel",
+                    "Main Profession Num": 25628665,
+                    "Main Profession Type": "ea dese",
+                    "Permanent Service Start": "4281-02-22T14:36:28.908Z",
+                    "Start Of Next Permanent Service": "1988-10-22T02:15:51.298Z",
+                    "Rank Before Position": "Corporal",
+                    "End of Current Commitment": "4890-03-13T00:41:00.890Z",
+                    "Date Of Birth": "2881-07-20T03:08:29.840Z"
+                },
+                "Soldiers Request": {
+                    "Extra Time Added To Service": {
+                        "In Words": "ipsum non adipisicing occaecat in"
+                    },
+                    "Starting Date": "3150-07-30T23:45:24.868Z"
+                },
+                "Reason for the Extension of Service": "occaecat pariatur nostrud"
+            },
+                "Commander Opinion": {
+                    "Time Under My Command": "consectetur nisi ipsum velit",
+                    "I Approve The Extension of The Service": False,
+                    "Details and Comments": "dolore qui id"
+                }
+            },
+            "metadata": {
+                "steps": [{"step_id": "ddffd", "aprrover": "ssss", "step_name": "ishur rashatz", "status": "approved",
+                           "next_steps": [{"step_id": "ddffdads", "step_name": "ishur rashatz", "aprrover": "aaassss",
+                                           "status": "waiting", "next_steps": []}]}],
+                "form_type": "haaracha",
+                "creation_time": "2017-06-19 11:45:00",
+                "last_update_time": "2017-06-19 11:45:00",
+                "creator_id": "1233",
+                "displayName": "haaracha"
+            },
+            "uuid": "666"
+        }]})

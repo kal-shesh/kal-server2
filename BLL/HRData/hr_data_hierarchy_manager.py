@@ -6,6 +6,8 @@ class HRDataHierarchyManager(IHRDataHierarchyManager):
         self._data = dict(hierarchy_data_getter.get_hierarchy_data())
 
     def get_corresponding_organizational_role(self, user_organizational_data, role):
+        data = self._data
         for organizational_unit in user_organizational_data:
-            if role in self._data[user_organizational_data[organizational_unit]]:
-                return self._data[role]
+            if role in data[organizational_unit]:
+                return data[organizational_unit][role]
+            data = data[organizational_unit]

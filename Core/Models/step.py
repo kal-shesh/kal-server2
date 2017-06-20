@@ -1,19 +1,19 @@
 class Step:
-    def __init__(self, description, status, approver_id, steps=list()):
-        self.description = description
+    def __init__(self, step_name, status, approver, next_steps=list()):
+        self.step_name = step_name
         self.status = status
-        self.approver_id = approver_id
-        self.steps = steps
+        self.approver = approver
+        self.next_steps = next_steps
 
     @staticmethod
     def create_step_from_dictionary(data):
-        desc = data['description']
+        step_name = data['step_name']
         status = data['status']
-        approver_id = data['approver_id']
-        steps = []
+        aprrover = data['aprrover']
+        next_steps = []
 
-        for s in data['steps']:
-            steps.append(Step.create_step_from_dictionary(s))
+        for s in data['next_steps']:
+            next_steps.append(Step.create_step_from_dictionary(s))
 
-        step = Step(desc, status, approver_id, steps)
+        step = Step(step_name, status, aprrover, next_steps)
         return step

@@ -22,7 +22,7 @@ class FormExecutor(IFormExecutor):
         form_data['uuid'] = uuid.uuid4()
         self.__generate_metadata(form_data, form_schema, user_id)
         form_object = Form.create_from_dictionary(form_data)
-        self.__generate_step_approvers(user_id, form_object)
+        self.__generate_step_approvers(user_id, form_object.form_metadata.steps)
         self.__save_new_form(form_object)
 
     def update_step(self, user_id, form_id, data):
@@ -53,20 +53,21 @@ class FormExecutor(IFormExecutor):
         return dictionary
 
     def __generate_metadata(self, form_data, form_type_data, user_id):
-        form_data['metadata'] = {key: value for key, value in form_type_data if key != 'shcema'}
+        form_data['form_metadata'] = {key: value for (key, value) in form_type_data.items() if key != 'shcema'}
         time = str(datetime.datetime.now())
-        form_data['metadata']['creation_time'] = time
-        form_data['metadata']['last_update_time'] = time
-        form_data['metadata']['creator_id'] = user_id
+        form_data['form_metadata']['creation_time'] = time
+        form_data['form_metadata']['last_update_time'] = time
+        form_data['form_metadata']['creator_id'] = user_id
+
 
     def __generate_step_approvers(self, user_id, steps):
         user_data = self.hr_data_manager.get_hr_soldier_data_by_id(user_id)
         hirarchy = self.__get_user_hirarchy_list(user_data)
         for step in steps:
-            step.approver_id = self.hr_hirarchy_manager.get_corresponding_organizational_role(hirarchy,
-                                                                                              step.approver_id)
-            if len(step.steps) != 0:
-                self.__generate_step_approvers(user_data, step.steps)
+            step.approver = self.hr_hirarchy_manager.get_corresponding_organizational_role(hirarchy,
+                                                                                              step.approver)
+            if len(step.next_steps) != 0:
+                self.__generate_step_approvers(user_id, step.next_steps)
 
     def __get_user_hirarchy_list(self, user_data):
         keys = [DIVISION_KEY, UNIT_KEY, BRANCH_KEY, DEPARTMENT_KEY, TEAM_KEY]
