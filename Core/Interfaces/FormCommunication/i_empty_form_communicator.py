@@ -1,4 +1,4 @@
-class IFormGetter:
+class IEmptyFormCommunicator:
     def get_all_forms_types(self):
         raise NotImplementedError
 

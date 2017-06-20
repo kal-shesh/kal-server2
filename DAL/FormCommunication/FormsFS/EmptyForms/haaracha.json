@@ -1,0 +1,214 @@
+{
+            "id": "haaracha",
+            "displayName": "tofes haarachat keva",
+            "description": "a form to ask premission to hul",
+            "jpeg": "http://files.softicons.com/download/holidays-icons/desktop-halloween-icons-by-aha-soft/png/128x128/Death.png",
+            "schema": {
+                "$schema": "http://json-schema.org/draft-04/schema#",
+                "description": "",
+                "type": "object",
+                "properties": {
+                    "Soldiers Details": {
+                        "type": "object",
+                        "properties": {
+                            "Personal Info": {
+                                "type": "object",
+                                "properties": {
+                                    "ID": {
+                                        "type": "number"
+                                    },
+                                    "Rank": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "enum": ["Private", "Corporal", "Sergeant", "Staff Sergeant", "S.Lieutenant",
+                                                 "Lieutenant", "Captain", "Major", "Lieutenant Colonel", "Colonel",
+                                                 "Brigadier-general"]
+                                    },
+                                    "Family Name": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "First Name": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "Corps": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "Unit": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "Citizenship": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "Family Status": {
+                                        "type": "string",
+                                        "minLength": 1
+                                    },
+                                    "Date Of Birth": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "education": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "Medical Profile": {
+                                        "type": "number"
+                                    },
+                                    "Is Permanent": {
+                                        "type": "boolean"
+                                    },
+                                    "Medical Profile set date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "Job": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "Main Profession": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "Main Profession Num": {
+                                        "type": "number"
+                                    },
+                                    "Main Profession Type": {
+                                        "type": "string",
+                                        "minLength": 3,
+                                        "maxLength": 40
+                                    },
+                                    "Permanent Service Start": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "Start Of Next Permanent Service": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    },
+                                    "Rank Before Position": {
+                                        "type": "string",
+                                        "minLength": 1,
+                                        "enum": ["Private", "Corporal", "Sergeant", "Staff Sergeant", "S.Lieutenant",
+                                                 "Lieutenant", "Captain", "Major", "Lieutenant Colonel", "Colonel",
+                                                 "Brigadier-general"]
+                                    },
+                                    "End of Current Commitment": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "required": [
+                                    "ID",
+                                    "Rank",
+                                    "Family Name",
+                                    "First Name",
+                                    "Corps",
+                                    "Unit",
+                                    "Citizenship",
+                                    "Family Status",
+                                    "Date Of Birth",
+                                    "education",
+                                    "Medical Profile",
+                                    "Is Permanent",
+                                    "Medical Profile set date",
+                                    "Job",
+                                    "Main Profession",
+                                    "Main Profession Num",
+                                    "Main Profession Type",
+                                    "Permanent Service Start",
+                                    "Start Of Next Permanent Service",
+                                    "Rank Before Position",
+                                    "End of Current Commitment"
+                                ]
+                            },
+                            "Soldiers Request": {
+                                "type": "object",
+                                "properties": {
+                                    "Extra Time Added To Service": {
+                                        "type": "object",
+                                        "properties": {
+                                            "Days": {
+                                                "type": "number"
+                                            },
+                                            "Months": {
+                                                "type": "number"
+                                            },
+                                            "Years": {
+                                                "type": "number"
+                                            },
+                                            "In Words": {
+                                                "type": "string",
+                                                "minLength": 3,
+                                                "maxLength": 60
+                                            }
+                                        },
+                                        "required": [
+                                            "In Words"
+                                        ]
+                                    },
+                                    "Starting Date": {
+                                        "type": "string",
+                                        "format": "date-time"
+                                    }
+                                },
+                                "required": [
+                                    "Extra Time Added To Service",
+                                    "Starting Date"
+                                ]
+                            },
+                            "Reason for the Extension of Service": {
+                                "type": "string",
+                                "minLength": 3,
+                                "maxLength": 40
+                            }
+                        },
+                        "required": [
+                            "Personal Info",
+                            "Soldiers Request",
+                            "Reason for the Extension of Service"
+                        ]
+                    },
+                    "Commander Opinion": {
+                        "type": "object",
+                        "properties": {
+                            "Time Under My Command": {
+                                "type": "string",
+                                "minLength": 3,
+                                "maxLength": 40
+                            },
+                            "I Approve The Extension of The Service": {
+                                "type": "boolean"
+                            },
+                            "Details and Comments": {
+                                "type": "string",
+                                "maxLength": 500
+                            }
+                        },
+                        "required": [
+                            "Time Under My Command",
+                            "I Approve The Extension of The Service",
+                            "Details and Comments"
+                        ]
+                    }
+                },
+                "required": [
+                    "Soldiers Details",
+                    "Commander Opinion"
+                ]
+            },
+            "steps": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
+                      "next_steps": [{"step_id": "ddffdads", "step_name": "ishur ramad", "aprrover": "HEAD OF BRANCH",
+                                      "status": "waiting", "next_steps": []}]}]}
