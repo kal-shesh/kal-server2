@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, send_from_directory
 from flask_cors import CORS, cross_origin
 import json
 from BLL import *
@@ -81,6 +81,10 @@ def get_user_data(user_id):
         result[new_key] = data
     return json.dumps(result)
 
+
+@app.route('/pdf/<form_id>')
+def send_js(form_id):
+    return send_from_directory('.\\PDF\\OutputFolder', "{form}.pdf".format(form=form_id))
 
 if __name__ == '__main__':
     app.run()

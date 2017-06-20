@@ -83,5 +83,27 @@
       "Diploma Details"
     ]
   },
-  "next_steps": []
+  "next_steps": [{
+				"step_id": "ddffd",
+				"approver": "HEAD OF DEPARTMENT",
+				"step_name": "ishur ramad",
+				"status": "approved",
+                      		"next_steps": [{
+					"step_id": "ddffdads",
+					"step_name": "ishur sa’al",
+					"approver": "HEAD OF BRANCH",
+                                      	"status": "waiting",
+					"next_steps": [{
+						"step_id": "ddffdadaawads",
+						"step_name": "ishur alam",
+						"approver": "HEAD OF UNIT",
+                	                      	"status": "waiting",
+						"next_steps": []}]}]
+			},
+			{
+				"step_id": "ddfadadafdads",
+				"step_name": "ishur karat",
+				"approver": "SECURITY OFFICER",
+				"status": "waiting",
+				"next_steps": []}]
 }
