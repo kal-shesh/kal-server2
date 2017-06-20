@@ -19,7 +19,7 @@ class FormExecutor(IFormExecutor):
         form_data = json.loads(form_data)
         form_schema = json.loads(self.form_getter.get_form_type(form_data['id']))
         form_data['data'] = self.__get_full_form_data(form_schema, form_data)
-        form_data['uuid'] = uuid.uuid4()
+        form_data['uuid'] = uuid.uuid4().urn[9:]
         self.__generate_metadata(form_data, form_schema, user_id)
         form_object = Form.create_from_dictionary(form_data)
         self.__generate_step_approvers(user_id, form_object.form_metadata.steps)

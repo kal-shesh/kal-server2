@@ -224,7 +224,7 @@ class MockFormGetter(IFormGetter):
                     "Commander Opinion"
                 ]
             },
-            "steps": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
+            "next_steps": [{"step_id": "ddffd", "aprrover": "HEAD OF DEPARTMENT", "step_name": "ishur rashatz", "status": "approved",
                       "next_steps": [{"step_id": "ddffdads", "step_name": "ishur ramad", "aprrover": "HEAD OF BRANCH",
                                       "status": "waiting", "next_steps": []}]}]})
 
