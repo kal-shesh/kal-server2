@@ -9,7 +9,8 @@ app = Flask(__name__)
 CORS(app)
 hr_dal = JsonHrSoldiersDbCommunicator()
 form_getter = MockFormGetter()
-form_executor = MockFormExecutor()
+#my_form_executor = FormExecutor(form_getter)
+my_form_executor = MockFormExecutor()
 hr_getter = HRSoldiersDataManager(hr_dal)
 
 
@@ -29,7 +30,8 @@ def get_form(type_id):
 @app.route("/forms/active/<user_id>", methods=['POST'])
 def create_form(user_id):
     # writing to file and to user_id file
-    form_executor.create_form(user_id, request.data)
+    data = my_form_executor.create_form(user_id, request.data)
+    return data
 
 
 @app.route("/forms/active/update/user=<user_id>&form_id=<form_id>", methods=['POST'])
@@ -58,7 +60,8 @@ def get_waiting_forms_by_user_id(user_id):
 
 @app.route("/HRdata/<user_id>", methods=['GET'])
 def get_user_data(user_id):
-    return hr_getter.get_hr_soldier_data_by_id(user_id)
+    result = hr_getter.get_hr_soldier_data_by_id(user_id)
+    return result
 
 
 if __name__ == '__main__':
