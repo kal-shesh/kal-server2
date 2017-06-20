@@ -5,6 +5,7 @@ import datetime
 import uuid
 from Core import Form
 from PDF.pdf_generator import PdfGenerator
+from Core.system_consts import is_windows
 
 
 class FormExecutor(IFormExecutor):
@@ -25,7 +26,8 @@ class FormExecutor(IFormExecutor):
         form_object = Form.create_from_dictionary(form_data)
         self.__generate_step_approvers(user_id, form_object.metadata.next_steps)
         self.__save_new_form(form_object)
-        PdfGenerator.create_pdf(form_object)
+        if is_windows:
+            PdfGenerator.create_pdf(form_object)
         return True
 
     def update_step(self, user_id, form_id, data):
@@ -33,7 +35,8 @@ class FormExecutor(IFormExecutor):
         if data['status'] in [APPROVED, REJECTED]:
             self.form_commincator.update_form(form)
             self.user_commincator.update_user_awaiting_forms_file(user_id, {REMOVED_KEY: [form_id]})
-            PdfGenerator.create_pdf(form)
+            if is_windows:
+                PdfGenerator.create_pdf(form)
         elif data['status'] in [WAITING]:
             for approver in self.__get_all_awaiting_approvers(form.form_metadata.next_steps):
                 self.user_commincator.update_user_awaiting_forms_file(approver, {ADDED_KEY: [form_id]})
