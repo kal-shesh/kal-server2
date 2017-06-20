@@ -1,10 +1,32 @@
-mapping = \
-[
-    ["ID", "ID_NUMBER"],
-    ["First Name", "FIRST_NAME"],
-    ["Last Name", "LAST_NAME"],
-    ["Date Of Birth", "BIRTH_DATE"],
-    ["Personal Number", "PERSONAL_NUMBER"],
-    ["Rank", "RANK"],
-    ["Job", "TAFKID"]
-]
+{
+  "mapping": [
+    [
+      "ID",
+      "ID_NUMBER"
+    ],
+    [
+      "First Name",
+      "FIRST_NAME"
+    ],
+    [
+      "Last Name",
+      "LAST_NAME"
+    ],
+    [
+      "Date Of Birth",
+      "BIRTH_DATE"
+    ],
+    [
+      "Personal Number",
+      "PERSONAL_NUMBER"
+    ],
+    [
+      "Rank",
+      "RANK"
+    ],
+    [
+      "Job",
+      "TAFKID"
+    ]
+  ]
+}

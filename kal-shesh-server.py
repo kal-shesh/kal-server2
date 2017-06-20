@@ -7,7 +7,7 @@ from DAL import *
 # from Forms import *
 
 from Core.system_consts import PATH_SEPARATOR
-MATCHER_PATH = ".{delimiter}Core{delimiter}Configs{delimiter}display_name_to_hr_data_mapping.json"
+MATCHER_PATH = ".{delimiter}Core{delimiter}Configs{delimiter}display_name_to_hr_data_mapping.json".format(delimiter=PATH_SEPARATOR)
 
 app = Flask(__name__)
 CORS(app)
@@ -17,7 +17,7 @@ form_getter = MockFormGetter()
 my_form_executor = MockFormExecutor()
 hr_getter = HRSoldiersDataManager(hr_dal)
 with open(MATCHER_PATH, "rb") as matcher_fp:
-    adapter = DisplayNameToHRServerClientDataExchangeMatcher(json.load(matcher_fp))
+    adapter = DisplayNameToHRServerClientDataExchangeMatcher(json.load(matcher_fp)['mapping'])
 
 
 @app.route("/forms", methods=['GET'])
